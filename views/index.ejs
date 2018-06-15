@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+  </head>
+  <body>
+    <h1>登录</h1>
+    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+  </body>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    var ue = UE.getEditor('editor');
+     $.ajax({
+      type: "POST",
+      url: '/users/login',
+      data: {
+        name: '樊中魁',
+        password: 'f379eaf3c831b04de153469d1bec345e'
+      },
+      // dataType: "jsonp",
+      jsonp: "callback",
+      success: function (res) {
+        console.log(res)
+      },
+      error: function (err) {
+        console.log(err)
+      }
+    });
+    $.get('/news/list', function(data) {
+      console.log(data)
+    }, 'json')
+  </script>
+</html>
